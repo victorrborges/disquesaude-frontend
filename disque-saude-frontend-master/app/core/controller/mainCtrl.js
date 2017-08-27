@@ -3,7 +3,7 @@ app.controller("searchAverangeCtrl", function ($scope, $http) {
     $scope.average = null;
 
     $scope.searchAveragePerPatient = function (id) {
-        $http.get("http://localhost:5000/SpringBootRestApi/api/geral/medicos/" + id).then(function successCallback(response) {
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/geral/medicos/" + id).then(function successCallback(response) {
             $scope.average = response.data.obj;
         }, function errorCallback(error) {
             console.log("Unidade Não Encontrada");
@@ -19,7 +19,7 @@ app.controller("registerComplaintCtrl", function ($scope, $http, toastr, $locati
       complaint.type = "queixa";
       complaint.situacao = "aberta";
 	     console.log(complaint);
-        $http.post("http://localhost:5000/SpringBootRestApi/api/queixa/", JSON.stringify(complaint))
+        $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/", JSON.stringify(complaint))
             .then(function success(response) {
                 toastr.success("Queixa adicionada com sucesso!");
                 $location.path('/createdcomplaint/' + response.data.id);
@@ -32,7 +32,7 @@ app.controller("registerComplaintCtrl", function ($scope, $http, toastr, $locati
         complaint.type = "queixa_animal";
         complaint.situacao = "aberta";
            console.log(complaint);
-          $http.post("http://localhost:5000/SpringBootRestApi/api/queixa/", JSON.stringify(complaint))
+          $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/", JSON.stringify(complaint))
               .then(function success(response) {
                   toastr.success("Queixa adicionada com sucesso!");
                   $location.path('/createdcomplaint/' + response.data.id);
@@ -48,7 +48,7 @@ app.controller("searchAverangeCtrl", function ($scope, $http) {
     $scope.average = null;
 
     $scope.searchAveragePerPatient = function (id) {
-        $http.get("http://localhost:5000/SpringBootRestApi/api/geral/medicos/" + id).then(function successCallback(response) {
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/geral/medicos/" + id).then(function successCallback(response) {
             $scope.average = response.data.obj;
         }, function errorCallback(error) {
             console.log("Unidade Não Encontrada");
@@ -60,7 +60,7 @@ app.controller("searchComplaintCtrl", function ($scope, $http) {
     $scope.complaint;
 
     $scope.searchComplaint = function (id) {
-        $http.get("http://localhost:5000/SpringBootRestApi/api/queixa/" + id).then(function successCallback(response) {
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/" + id).then(function successCallback(response) {
             $scope.complaint = response.data;
             console.log($scope.complaint);
         }, function errorCallback(error) {
@@ -76,7 +76,7 @@ app.controller("searchHealthUnitCtrl", function ($scope, $http) {
 
     $scope.searchHU = function (neighborhood) {
       console.log(neighborhood);
-        $http.get("http://localhost:5000/SpringBootRestApi/api/unidade/busca/bairro/" + neighborhood)
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/unidade/busca/bairro/" + neighborhood)
             .then(function success(response) {
                 $scope.units = [];
                 for (i = 0; i < response.data.length; i++) {
@@ -103,7 +103,7 @@ app.controller("searchHealthUnitSpecialtyCtrl", function ($scope, $http) {
 
     $scope.searchHU = function (especialidade) {
       console.log(especialidade);
-        $http.get("http://localhost:5000/SpringBootRestApi/api/unidade/busca/especialidade/" + especialidade)
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/unidade/busca/especialidade/" + especialidade)
             .then(function success(response) {
                 $scope.units = [];
                 for (i = 0; i < response.data.length; i++) {
@@ -131,7 +131,7 @@ app.controller("generalSituationComplaintsCtrl", function ($scope, $http) {
 
     var getGeneralSituationComplaints = function (neighborhood) {
 
-        $http.get("http://localhost:5000/SpringBootRestApi/api/geral/situacao")
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/geral/situacao")
             .then(function success(response) {
                 console.log(response.data.obj);
 
@@ -178,7 +178,7 @@ app.controller("loginCtrl", function ($scope, $http, toastr, $rootScope, $locati
 
   $scope.doLogin = function (admin) {
     console.log(JSON.stringify(admin));
-    $http.post("http://localhost:5000/SpringBootRestApi/api/admin/login/", JSON.stringify(admin))
+    $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/admin/login/", JSON.stringify(admin))
         .then(function success(response) {
           $location.path('/');
           toastr.success("Admin logado com sucesso!");
@@ -196,7 +196,7 @@ app.controller("changeComplaintStatusCtrl", function ($scope, $http, toastr) {
     $scope.complaint;
 
     $scope.searchComplaint = function (id) {
-        $http.get("http://localhost:5000/SpringBootRestApi/api/queixa/" + id).then(function successCallback(response) {
+        $http.get("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/" + id).then(function successCallback(response) {
             $scope.complaint = response.data;
             console.log($scope.complaint);
         }, function errorCallback(error) {
@@ -207,7 +207,7 @@ app.controller("changeComplaintStatusCtrl", function ($scope, $http, toastr) {
 
 
     $scope.updateComplaint = function (complaint) {
-        $http.put("http://localhost:5000/SpringBootRestApi/api/queixa/" + complaint.id, JSON.stringify(complaint)).then(function successCallback(response) {
+        $http.put("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/" + complaint.id, JSON.stringify(complaint)).then(function successCallback(response) {
           toastr.success("Queixa atualizada com sucesso!");
         }, function errorCallback(error) {
             $scope.complaint = null;
@@ -219,7 +219,7 @@ app.controller("changeComplaintStatusCtrl", function ($scope, $http, toastr) {
 app.controller("changeTownhallStatusCtrl", function ($scope, $http, toastr) {
   $scope.setTownhallStatus = function (status) {
     console.log(status);
-    $http.post("http://localhost:5000/SpringBootRestApi/api/prefeitura/" + status).then(function successCallback(response) {
+    $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/prefeitura/" + status).then(function successCallback(response) {
       toastr.success("Situação da prefeitura atualizada com sucesso!");
     }, function errorCallback(error) {
         console.log(error);
@@ -257,7 +257,7 @@ app.controller("registerHealthUnitCtrl", function ($scope, $http, toastr) {
 
     console.log(unit);
 
-    $http.post("http://localhost:5000/SpringBootRestApi/api/unidade/", JSON.stringify(unit)).then(function successCallback(response) {
+    $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/unidade/", JSON.stringify(unit)).then(function successCallback(response) {
       toastr.success("Unidade de saude adicionada com sucesso!");
     }, function errorCallback(error) {
         console.log(error);
