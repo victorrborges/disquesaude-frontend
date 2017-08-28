@@ -22,7 +22,8 @@
             <div class="row" ng-if="complaint">
                 <div class="col-lg-12">
                     <h2 class="text-info">{{complaint.descricao}}</h2>
-                    <p>Tipo: <span class="badge">{{complaint.tipo}}</span></p>
+                    <!--<p ng-show="complaint.tipoAnimal == queixa_animal">Tipo: <span class="badge">{{complaint.tipoAnimal}}</span></p>-->
+                    <p>Tipo: <span class="badge">{{complaint.tipoAnimal}}</span></p>
                     <p>Comentário: <span class="badge">{{complaint.comentario}}</span></p>
                     <p>Situação: <span class="badge">{{complaint.situacao}}</span></p>
                     <p>Solicitante</p>

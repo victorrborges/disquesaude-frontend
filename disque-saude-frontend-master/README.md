@@ -1,3 +1,8 @@
+### Link para o heroku
+
+Link da aplicação na plataforma heroku:
+https://disquesaude.herokuapp.com/
+
 ### Instalação das dependências
 
 Primeiramente, devemos ter o bower, grunt-cli e o karma-cli instalados globalmente. Para isso, execute no terminal de comando a seguinte linha de comando:
