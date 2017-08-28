@@ -32,7 +32,7 @@ app.controller("registerComplaintCtrl", function ($scope, $http, toastr, $locati
         complaint.type = "queixa_animal";
         complaint.situacao = "aberta";
            console.log(complaint);
-          $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/", JSON.stringify(complaint))
+          $http.post("https://disquesaudebackend.herokuapp.com/SpringBootRestApi/api/queixa/animal", JSON.stringify(complaint))
               .then(function success(response) {
                   toastr.success("Queixa adicionada com sucesso!");
                   $location.path('/createdcomplaint/' + response.data.id);
